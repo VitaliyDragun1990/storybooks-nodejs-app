@@ -27,6 +27,8 @@ mongoose.connect(keys.mongoURI)
     })
     .catch(err => console.log(err));
 
+
+// Create express app
 const app = express();
 
 // Handlebars Middleware
