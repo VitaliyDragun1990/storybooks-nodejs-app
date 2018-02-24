@@ -9,16 +9,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
     <title>StoryBooks</title>
 </head>
 <body>
 {{> _header}}
+{{#if user}}
+{{> _add-btn}}
+{{/if}}
 <main>
     <div class="container">
         {{{body}}}
     </div>
 </main>
-
+{{> _footer}}
 
 <!-- JQuery -->
 <script
@@ -27,10 +31,17 @@
         crossorigin="anonymous"></script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
+
 <script>
-    // SIDEBAR INIT
+    // Materialize components initialization
     $(document).ready(() => {
         $('.button-collapse').sideNav();
+        $('select').material_select();
+    });
+    // CKEditor initialization (textarea widget)
+    CKEDITOR.replace('body', {
+        plugins: 'wysiwygarea,toolbar,basicstyles,link'
     });
 </script>
 </body>
